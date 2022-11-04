@@ -1,4 +1,14 @@
+@use '../../../../assets/styles/variables.scss' as *;
 :host{
-    background: #ddd;
+    background: $darkgray;
     padding: 20px;
+}
+
+.logo{
+    font-size: 22px;
+    color: white;
+}
+
+.logo-icon, .shopping-basket{
+    font-size: 25px;
 }

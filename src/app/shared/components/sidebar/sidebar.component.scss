@@ -1,4 +1,6 @@
+@use '../../../../assets/styles/variables.scss' as *;
+
 :host{
-    background: #bbb;
+    background: $lightgray;
     padding: 20px;
 }
