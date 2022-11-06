@@ -1,4 +1,4 @@
-:host{
+:host {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -6,14 +6,20 @@
 
 .content {
     padding: 20px;
+    color: #f9f9f9;
 }
 
-header{
-    background: #ddd;
+header {
+    background: #292b31;
     padding: 20px;
+    color: #fff;
 }
 
-.sidebar{
+.sidebar {
     background: #bbb;
     padding: 20px;
+
+    a {
+        color: #fff;
+    }
 }
