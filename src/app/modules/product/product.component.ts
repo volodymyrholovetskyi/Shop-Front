@@ -22,13 +22,14 @@ export class ProductComponent implements OnInit {
   getProducts() {
     this.getProductPage(0, 10);
   }
-  
+
   onPageEvent(event: PageEvent) {
     this.getProductPage(event.pageIndex, event.pageSize)
+    console.log(event.pageIndex)
   }
-  
-    private getProductPage(page: number, size: number) {
-      this.productService.getProducts(page, size)
-        .subscribe(page => this.page = page);
-    }
+
+  private getProductPage(page: number, size: number) {
+    this.productService.getProducts(page, size)
+      .subscribe(page => this.page = page);
+  }
 }
