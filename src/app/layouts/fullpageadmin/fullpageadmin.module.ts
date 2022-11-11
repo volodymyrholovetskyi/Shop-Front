@@ -10,6 +10,7 @@ import { AdminProductUpdateComponent } from 'src/app/modules/admin/admin-product
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminProductFormComponent } from 'src/app/modules/admin/admin-product-form/admin-product-form.component';
 import { AdminProductAddComponent } from 'src/app/modules/admin/admin-product-add/admin-product-add.component';
+import { AdminMessageComponent } from 'src/app/modules/admin/admin-message/admin-message.component';
 
 
 
@@ -21,7 +22,8 @@ import { AdminProductAddComponent } from 'src/app/modules/admin/admin-product-ad
     AdminProductUpdateComponent,
     AdminProductComponent,
     AdminProductFormComponent,
-    AdminProductAddComponent
+    AdminProductAddComponent,
+    AdminMessageComponent
   ],
   imports: [
     CommonModule,

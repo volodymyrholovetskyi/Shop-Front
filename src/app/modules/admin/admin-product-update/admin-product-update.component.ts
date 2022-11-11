@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { AdiminMessageService } from '../adimin-message.service';
 import { AdminProductUpdateService } from './admin-product-update.service';
 import { AdminProductUpdate } from './model/adminProductUpdate';
 
@@ -19,17 +20,18 @@ export class AdminProductUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private adminProductUpdateService: AdminProductUpdateService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adminMessageService: AdiminMessageService
   ) { }
 
   ngOnInit(): void {
     this.getProduct();
     this.productForm = this.formBuilder.group({
-      name: [''],
-      description: [''],
-      category: [''],
-      price: [''],
-      currency: ['PLN']
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      description: ['', [Validators.required, Validators.minLength(4)]],
+      category: ['', [Validators.required, Validators.minLength(4)]],
+      price: ['', [Validators.required, Validators.min(0)]],
+      currency: ['PLN', Validators.required]
     });
   }
 
@@ -47,9 +49,12 @@ export class AdminProductUpdateComponent implements OnInit {
       category: this.productForm.get('category')?.value,
       price: this.productForm.get('price')?.value,
       currency: this.productForm.get('currency')?.value,
-    } as AdminProductUpdate).subscribe(product => {
-      this.mapFormValues(product);
-      this.snackBar.open("The product has been saved", '', {duration: 3000});
+    } as AdminProductUpdate).subscribe({
+      next: product => {
+        this.mapFormValues(product);
+        this.snackBar.open("The product has been saved", '', { duration: 3000 });
+      },
+      error: err => this.adminMessageService.addSpringErrors(err.error)
     });
   }
 
