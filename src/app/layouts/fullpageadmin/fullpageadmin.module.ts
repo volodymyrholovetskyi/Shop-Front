@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminProductFormComponent } from 'src/app/modules/admin/admin-product-form/admin-product-form.component';
 import { AdminProductAddComponent } from 'src/app/modules/admin/admin-product-add/admin-product-add.component';
 import { AdminMessageComponent } from 'src/app/modules/admin/admin-message/admin-message.component';
+import { AdminConfirmDialogComponent } from 'src/app/modules/admin/admin-confirm-dailog/admin-confirm-dialog.component';
 
 
 
@@ -23,7 +24,8 @@ import { AdminMessageComponent } from 'src/app/modules/admin/admin-message/admin
     AdminProductComponent,
     AdminProductFormComponent,
     AdminProductAddComponent,
-    AdminMessageComponent
+    AdminMessageComponent,
+    AdminConfirmDialogComponent
   ],
   imports: [
     CommonModule,
