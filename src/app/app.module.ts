@@ -9,6 +9,7 @@ import { FullpageadminModule } from './layouts/fullpageadmin/fullpageadmin.modul
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminConfirmDialogComponent } from './modules/admin/admin-confirm-dailog/admin-confirm-dialog.component';
+import { ProductDetailsComponent } from './modules/product-details/product-details.component';
 
 
 @NgModule({
