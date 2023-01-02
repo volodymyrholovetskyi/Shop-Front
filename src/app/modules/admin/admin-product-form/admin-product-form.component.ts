@@ -46,6 +46,11 @@ import { FormGroup } from "@angular/forms";
     </mat-form-field>
 
     <mat-form-field appearance="fill">
+         <mat-label>Full description</mat-label>
+        <textarea matInput rows="40" placeholder="Enter full product description" formControlName="fullDescription"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
         <mat-label>Category</mat-label>
         <input matInput placeholder="Enter the product category" formControlName="category">
         <div *ngIf="category?.invalid && (category?.dirty || category?.touched)" class="errorMessages">
@@ -85,7 +90,7 @@ import { FormGroup } from "@angular/forms";
         <button mat-flat-button color="primary" [disabled]="!parentForm.valid">Save</button>
     </div>
     </div>`,
-        styles: [`
+    styles: [`
             .errorMessages{
             color:red;
        }`]
@@ -103,6 +108,10 @@ export class AdminProductFormComponent implements OnInit {
 
     get description() {
         return this.parentForm.get("description")
+    }
+
+    get fullDescription() {
+        return this.parentForm.get("fullDescription")
     }
 
     get category() {

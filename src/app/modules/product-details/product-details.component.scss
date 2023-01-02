@@ -1,6 +1,6 @@
 @use '../../../assets/styles/variables' as *;
 
-.description{
+.description, .fullDescription{
     margin-top:20px;
     margin-bottom: 25px;
 }
@@ -11,3 +11,4 @@
     margin-bottom: 20px;
     color: $warn;
 }
+
