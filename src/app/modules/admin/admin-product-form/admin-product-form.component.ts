@@ -1,6 +1,8 @@
 import { SelectorContext } from "@angular/compiler";
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { AdminCategoryNamesDto } from "./adminCategoryNamesDto";
+import { FormCategoryService } from "./form-category.service";
 
 @Component({
     selector: 'app-admin-product-form',
@@ -50,9 +52,13 @@ import { FormGroup } from "@angular/forms";
         <textarea matInput rows="40" placeholder="Enter full product description" formControlName="fullDescription"></textarea>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill">
         <mat-label>Category</mat-label>
-        <input matInput placeholder="Enter the product category" formControlName="category">
+        <mat-select>
+            <mat-option *ngFor="let el of categories" [value]="el.id">
+            {{el.name}}
+            </mat-option>
+        </mat-select>
         <div *ngIf="category?.invalid && (category?.dirty || category?.touched)" class="errorMessages">
                 <div *ngIf="category?.errors?.['required']">
                     Category is required
@@ -61,7 +67,7 @@ import { FormGroup } from "@angular/forms";
                      Category must be at least 4 characters long
                 </div>
             </div>
-    </mat-form-field>
+        </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Price</mat-label>
@@ -98,8 +104,17 @@ import { FormGroup } from "@angular/forms";
 export class AdminProductFormComponent implements OnInit {
 
     @Input() parentForm!: FormGroup;
+    categories: Array<AdminCategoryNamesDto> = [];
+
+    constructor(private formCategoryService: FormCategoryService) { }
+
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        this.getCategories();
+    }
+
+    getCategories() {
+        this.formCategoryService.getCategories()
+            .subscribe(categories => this.categories = categories);
     }
 
     get name() {
